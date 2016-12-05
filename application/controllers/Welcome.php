@@ -15,7 +15,7 @@ class Welcome extends CI_Controller {
     {
         if($this->session->userdata('logged_in')){
             $session_data = $this->session->userdata('logged_in');
-            $data['user'] = $session_data['customerName'];
+            $data['user'] = $session_data['userName'];
             $data['title'] = 'Mini Things';
             $data['page'] = 'main';
             $this->load->view('home', $data);

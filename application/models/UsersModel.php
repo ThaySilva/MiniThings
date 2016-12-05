@@ -16,22 +16,23 @@ class UsersModel extends CI_Model {
     private $table = 'customers';
     
     public function __construct() {
+        parent::__construct();
         
         $this->load->database();
     }
     
     function login($email, $password) {
         
-        $this->db->select('customerNumber, email, password');
+        $this->db->select('customerNumber, contactFirstName, email, password');
         $this->db->from('customers');
         $this->db->where('email', $email);
-        $this->db->where('password', MD5($password));
-        $this->db->limit(1);
+        $this->db->where('password', $password);
         
         $query = $this->db->get();
         
-        if($query->num_rows == 1)
+        if($query->num_rows() == 1){
             return $query->result_array();
+        }
         else
             return false;
     }

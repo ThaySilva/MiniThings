@@ -27,7 +27,11 @@ class Login_controller extends CI_Controller {
     function index() {
         
         if($this->session->userData('logged_in')){
-            redirect('home');
+            $data['title'] = 'Welcome ' . $session_data['userName'];
+            $data['user'] = $session_data['userName'];
+            $data['page'] = 'main';
+            $data['alert'] = false;
+            redirect('home', $data);
         }
         else {
             $data['page'] = 'login';
@@ -42,7 +46,7 @@ class Login_controller extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
         
-        if($this->form_validation->run() == false){
+        if($this->form_validation->run()){
             $data['title'] = 'Register Mini Things';
             $data['user'] = '';
             $data['page'] = 'register';
@@ -52,10 +56,11 @@ class Login_controller extends CI_Controller {
         }
         else
         {
-            $data['title'] = 'Welcome to Mini Things';
-            $data['user'] = $email;
+            $session_data = $this->session->userdata('logged_in');
+            $data['title'] = 'Welcome ' . $session_data['userName'];;
+            $data['user'] = $session_data['userName'];
             $data['page'] = 'main';
-            redirect('home', $data);
+            $this->load->view('home', $data);
         }
     }
     
@@ -69,7 +74,7 @@ class Login_controller extends CI_Controller {
             
             $sess_array = array();
             foreach($result as $row) {
-                $sess_array = array('CustomerNo' => $row->customerNumber, 'userName' => 'customerName');
+                $sess_array = array('CustomerNo' => $row['customerNumber'], 'userName' => $row['contactFirstName']);
                 $this->session->set_userdata('logged_in', $sess_array);
             }
             return true;
@@ -77,5 +82,6 @@ class Login_controller extends CI_Controller {
         else {
             $this->form_validation->set_message('check_database', 'Invalid username or password');
         }
+        return false;
     }
 }
