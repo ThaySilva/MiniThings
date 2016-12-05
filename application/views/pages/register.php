@@ -21,108 +21,107 @@
 
 	<?php echo form_open('Register_controller/register', array('class'=>'form-horizontal'));?>
 		<h4>Your personal information</h4>
+		
 		<div class="control-group">
-		<label class="control-label">Title <sup>*</sup></label>
-		<div class="controls">
-                <?php 
-                        $options = array(
-                            'none' => '-', 
-                            'mr' => 'Mr.', 
-                            'mrs' => 'Mrs', 
-                            'miss' => 'Miss');
-                        echo form_dropdown('title', $options, array('class'=>'span1'));
-                ?>
-		</div>
+                    <label class="control-label" for="inputFname">First Name <sup>*</sup></label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'text', 'id'=>'inputFname', 'name'=>'firstName', 'placeholder'=>'First Name'));?>
+                    </div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="inputFname">First name <sup>*</sup></label>
-			<div class="controls">
-                          <?php echo form_input(array('type'=>'text', 'id'=>'inputFname', 'placeholder'=>'First Name'));?>
-			</div>
-		 </div>
-		 <div class="control-group">
-			<label class="control-label" for="inputLname">Last name <sup>*</sup></label>
-			<div class="controls">
-                          <?php echo form_input(array('type'=>'text', 'id'=>'inputLname', 'placeholder'=>'Last Name'));?>
-			</div>
-		 </div>
+                    <label class="control-label" for="inputLname">Last Name <sup>*</sup></label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'text', 'id'=>'inputLname', 'name'=>'lastName', 'placeholder'=>'Last Name'));?>
+                    </div>
+		</div>
+                <div class="control-group">
+                    <label class="control-label" for="inputCname">Company Name</label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'text', 'id'=>'inputCname', 'name'=>'companyName', 'placeholder'=>'Last Name'));?>
+                    </div>
+                </div>
 		<div class="control-group">
-		<label class="control-label" for="inputEmail">Email <sup>*</sup></label>
-		<div class="controls">
-                  <?php echo form_input(array('type'=>'email', 'id'=>'inputEmail', 'placeholder'=>'Email'));?>
-		</div>
-	  </div>	  
-	<div class="control-group">
-		<label class="control-label" for="inputPassword1">Password <sup>*</sup></label>
-		<div class="controls">
-                    <?php echo form_input(array('type'=>'password', 'id'=>'inputPassword1', 'placeholder'=>'Password'));?>
-		</div>
-	</div>
-        <div class="control-group">
-            <label class="control-label" for="inputPassword2">Re-Enter Password<sup>*</sup></label>
-            <div class="controls">
-                <?php echo form_input(array('type'=>'password', 'id'=>'inputPassword2', 'placeholder'=>'Re-Enter Password'));?>
-            </div>
-        </div>   
+                    <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'email', 'id'=>'inputEmail', 'name'=>'email', 'placeholder'=>'Email'));?>
+                    </div>
+                </div>	  
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword1">Password <sup>*</sup></label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'password', 'id'=>'inputPassword1', 'name'=>'password', 'placeholder'=>'Password'));?>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputPassword2">Re-Enter Password<sup>*</sup></label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'password', 'id'=>'inputPassword2', 'name'=>'password2', 'placeholder'=>'Re-Enter Password'));?>
+                    </div>
+                </div>   
+                
                 <h4>Billing and Delivery Address</h4>
+                
 		<div class="control-group">
-			<label class="control-label" for="inputFname">First name <sup>*</sup></label>
-			<div class="controls">
-			  <?php echo form_input(array('type'=>'text', 'id'=>'inputFname', 'placeholder'=>'First Name'));?>
-			</div>
+                    <label class="control-label" for="inputFname">First name <sup>*</sup></label>
+                    <div class="controls">
+			<?php echo form_input(array('type'=>'text', 'id'=>'inputFname', 'placeholder'=>'First Name'));?>
+                    </div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="inputLname">Last name <sup>*</sup></label>
-			<div class="controls">
-			  <?php echo form_input(array('type'=>'text', 'id'=>'inputLname', 'placeholder'=>'Last Name'));?>
-			</div>
+                    <label class="control-label" for="inputLname">Last name <sup>*</sup></label>
+                    <div class="controls">
+			<?php echo form_input(array('type'=>'text', 'id'=>'inputLname', 'placeholder'=>'Last Name'));?>
+                    </div>
 		</div>
-		
+                <div class="control-group">
+                    <label class="control-label" for="inputCredit">Credit Limit</label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'text', 'id'=>'inputCredit', 'name'=>'creditLimit', 'placeholder'=>'Credit Limit'));?>
+                    </div>
+                </div>
 		<div class="control-group">
-			<label class="control-label" for="inputAddress">Address<sup>*</sup></label>
-			<div class="controls">
-			  <?php echo form_input(array('type'=>'text', 'id'=>'inputAddress', 'placeholder'=>'Address'));?>
-			</div>
-		</div>
-		
-		<div class="control-group">
-			<label class="control-label" for="inputAddress2">Address (Line 2)<sup>*</sup></label>
-			<div class="controls">
-			  <?php echo form_input(array('type'=>'text', 'id'=>'inputAddress2', 'placeholder'=>'Address Line 2'));?>
-			</div>
+                    <label class="control-label" for="inputAddress">Address<sup>*</sup></label>
+                    <div class="controls">
+			<?php echo form_input(array('type'=>'text', 'id'=>'inputAddress', 'name'=>'address', 'placeholder'=>'Address'));?>
+                    </div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="inputCity">City<sup>*</sup></label>
-			<div class="controls">
-			  <?php echo form_input(array('type'=>'text', 'id'=>'inputCity', 'placeholder'=>'City'));?>
-			</div>
+                    <label class="control-label" for="inputAddress2">Address (Line 2)<sup>*</sup></label>
+                    <div class="controls">
+			<?php echo form_input(array('type'=>'text', 'id'=>'inputAddress2', 'name'=>'address2', 'placeholder'=>'Address Line 2'));?>
+                    </div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="inputCounty">County<sup>*</sup></label>
-                        <div class="controls">
-                            <?php echo form_input(array('type'=>'text', 'id'=>'inputCounty', 'placeholder'=>'County'));?>
-			</div>
+                    <label class="control-label" for="inputCity">City<sup>*</sup></label>
+                    <div class="controls">
+			<?php echo form_input(array('type'=>'text', 'id'=>'inputCity', 'name'=>'city', 'placeholder'=>'City'));?>
+                    </div>
+		</div>
+		<div class="control-group">
+                    <label class="control-label" for="inputCounty">County<sup>*</sup></label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'text', 'id'=>'inputCounty', 'name'=>'county', 'placeholder'=>'County'));?>
+                    </div>
 		</div>		
 		<div class="control-group">
-			<label class="control-label" for="inputPostcode">Zip / Postal Code<sup>*</sup></label>
-			<div class="controls">
-                          <?php echo form_input(array('type'=>'text', 'id'=>'inputPostcode', 'placeholder'=>'Zip/ Postal Code'));?>
-			</div>
+                    <label class="control-label" for="inputPostcode">Zip / Postal Code<sup>*</sup></label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'text', 'id'=>'inputPostcode', 'name'=>'postCode', 'placeholder'=>'Zip/ Postal Code'));?>
+                    </div>
 		</div>
-		
 		<div class="control-group">
-			<label class="control-label" for="country">Country<sup>*</sup></label>
-			<div class="controls">
+                    <label class="control-label" for="country">Country<sup>*</sup></label>
+                    <div class="controls">
 			<?php $this->load->helper('Register');
                             echo displayCountries();
                         ?>
-			</div>
+                    </div>
 		</div>	
 		<div class="control-group">
-			<label class="control-label" for="inputTelephone">Telephone <sup>*</sup></label>
-			<div class="controls">
-                          <?php echo form_input(array('type'=>'text', 'name'=>'telephone', 'id'=>'inputTelephone', 'placeholder'=>'Telephone'));?>
-			</div>
+                    <label class="control-label" for="inputTelephone">Telephone <sup>*</sup></label>
+                    <div class="controls">
+                        <?php echo form_input(array('type'=>'text', 'name'=>'phone', 'id'=>'inputTelephone', 'placeholder'=>'Telephone'));?>
+                    </div>
 		</div>
 		
 	<p><sup>*</sup>Required field	</p>

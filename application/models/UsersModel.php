@@ -15,10 +15,6 @@ class UsersModel extends CI_Model {
     
     private $table = 'customers';
     
-    public $email;
-    public $password;
-    public $name;
-    
     public function __construct() {
         
         $this->load->database();
@@ -49,13 +45,23 @@ class UsersModel extends CI_Model {
             return false;
         }
         else {
-            $this->name = $_POST['name'];
+            $this->customerName = $_POST['companyName'];
+            $this->contactLastName = $_POST['lastName'];
+            $this->contactFirstName = $_POST['firstName'];
+            $this->phone = $_POST['phone'];
+            $this->addressLine1 = $_POST['address'];
+            $this->addressLine2 = $_POST['address2'];
+            $this->city = $_POST['city'];
+            $this->state = $_POST['county'];
+            $this->postalCode = $_POST['postCode'];
+            $this->country = $_POST['country'];
+            $this->creditLimit = $_POST['creditLimit'];
             $this->email = $_POST['email'];
             $this->password = $_POST['password'];
             
             $user = $this->db->insert($this->table, $this);
             
-            $this->session->set_userdata('name', $user->name);
+            $this->session->set_userdata('name', $user->firstName);
             
             return true;
         }
