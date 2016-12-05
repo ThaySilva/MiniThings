@@ -18,12 +18,14 @@ class Welcome extends CI_Controller {
             $data['user'] = $session_data['userName'];
             $data['title'] = 'Mini Things';
             $data['page'] = 'main';
+            $data['logout'] = true;
             $this->load->view('home', $data);
         }
         else{
             $data['user'] = '';
             $data['title'] = 'Mini Things';
             $data['page'] = 'main';
+            $data['logout'] = false;
             $this->load->view('home', $data);
         }
     }

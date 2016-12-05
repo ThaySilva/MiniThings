@@ -52,6 +52,7 @@ class Login_controller extends CI_Controller {
             $data['page'] = 'register';
             $data['alert'] = true;
             $data['alertText'] = 'There is no user with the email: ' . $email . ' registered. Please register to have full access.';
+            $data['logout'] = false;
             $this->load->view('home', $data);
         }
         else
@@ -60,6 +61,7 @@ class Login_controller extends CI_Controller {
             $data['title'] = 'Welcome ' . $session_data['userName'];;
             $data['user'] = $session_data['userName'];
             $data['page'] = 'main';
+            $data['logout'] = true;
             $this->load->view('home', $data);
         }
     }
@@ -83,5 +85,17 @@ class Login_controller extends CI_Controller {
             $this->form_validation->set_message('check_database', 'Invalid username or password');
         }
         return false;
+    }
+    
+    function logout(){
+        
+        $this->session->unset_userdata('logged_in');
+        $this->session->sess_destroy();
+        
+        $data['title'] = 'Mini Things';
+        $data['user'] = '';
+        $data['page'] = 'main';
+        $data['logout'] = false;
+        $this->load->view('home', $data);
     }
 }
