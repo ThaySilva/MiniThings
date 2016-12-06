@@ -28,6 +28,7 @@ class Register_controller extends CI_Controller {
         $data['title'] = 'Register Mini Things';
         $data['user'] = '';
         $data['page'] = 'register';
+        $data['logout'] = false;
         $data['alert'] = false;
         $this->load->view('home', $data);
     }
