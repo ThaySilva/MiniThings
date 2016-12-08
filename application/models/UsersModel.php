@@ -27,6 +27,7 @@ class UsersModel extends CI_Model {
         $this->db->from('customers');
         $this->db->where('email', $email);
         $this->db->where('password', $password);
+        $this->db->limit(1);
         
         $query = $this->db->get();
         

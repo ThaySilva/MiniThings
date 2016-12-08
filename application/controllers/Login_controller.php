@@ -45,8 +45,8 @@ class Login_controller extends CI_Controller {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
         
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_database');
         
         if($this->form_validation->run() == false){
             if($email == null || $password == null){

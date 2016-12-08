@@ -56,7 +56,8 @@ class Register_controller extends CI_Controller {
                 $data['carousel'] = false;
                 $data['logout'] = false;
                 $data['alert'] = true;
-                $this->load->view('home', $data);
+                redirect('Register_controller', $data);
+                //$this->load->view('home', $data);
             }
         }
     }
