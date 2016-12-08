@@ -32,4 +32,17 @@ class ProductsModel extends CI_Model {
         else
             return false;
     }
+        
+    public function getImages(){
+        
+        $this->db->select('image');
+        $this->db->from('products');
+        
+        $query = $this->db->get();
+        
+        if($query->num_rows() >= 1)
+            return $query->result_array();
+        else
+            return false;
+    }
 }

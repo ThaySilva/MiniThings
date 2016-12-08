@@ -30,3 +30,44 @@ function displayCarousel() {
         }
     }
 }
+
+function displayFeaturesProducts() {
+    
+    $CI = get_instance();
+    $CI->load->model('ProductsModel');
+    $images['AllImages'] = $CI->ProductsModel->getImages();
+    
+    $ImageArray = array();
+    
+    foreach($images['AllImages'] as $index=>&$row){
+        
+        if($index < 4){
+            $ImageArray[$index] = $row;
+        }
+    }
+    
+    firstFours($ImageArray);
+   
+    
+}
+
+function firstFours($images){
+    
+    echo "<div class='item active'>";
+	echo "<ul class='thumbnails'>";
+        
+        foreach($images as $row){
+            echo "<li class='span3'>";
+                echo "<div class='thumbnail'>";
+                    echo "<i class='tag'></i>";
+                            echo "<a href='product_details.html'><img src='" . base_url() . "assets/images/products/" . $row ."' alt=''></a>";
+                            echo "<div class='caption'>";
+                                echo "<h5>Product name</h5>";
+                                echo "<h4><a class='btn' href='product_details.html'>VIEW</a> <span class='pull-right'>$222.00</span></h4>";
+                            echo "</div>";
+                    echo "</div>";
+            echo "</li>";
+        }
+	echo "</ul>";
+    echo "</div>";
+}
