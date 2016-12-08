@@ -30,6 +30,7 @@ class Login_controller extends CI_Controller {
             $data['title'] = 'Welcome ' . $session_data['userName'];
             $data['user'] = $session_data['userName'];
             $data['page'] = 'main';
+            $data['carousel'] = true;
             $data['alert'] = false;
             redirect('home', $data);
         }
@@ -42,18 +43,25 @@ class Login_controller extends CI_Controller {
     function verify_login() {
         
         $email = $this->input->post('email');
+        $password = $this->input->post('password');
         
         $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|callback_check_database');
         
-        if($this->form_validation->run()){
-            $data['title'] = 'Register Mini Things';
-            $data['user'] = '';
-            $data['page'] = 'register';
-            $data['alert'] = true;
-            $data['alertText'] = 'There is no user with the email: ' . $email . ' registered. Please register to have full access.';
-            $data['logout'] = false;
-            $this->load->view('home', $data);
+        if($this->form_validation->run() == false){
+            if($email == null || $password == null){
+                redirect('#login');
+            }
+            else if($this->check_database($password) == false){
+                $data['title'] = 'Register Mini Things';
+                $data['user'] = '';
+                $data['page'] = 'register';
+                $data['carousel'] = false;
+                $data['alert'] = true;
+                $data['alertText'] = 'There is no user with the email: ' . $email . ' registered. Please register to have full access.';
+                $data['logout'] = false;
+                $this->load->view('home', $data);
+            }
         }
         else
         {
@@ -61,6 +69,7 @@ class Login_controller extends CI_Controller {
             $data['title'] = 'Welcome ' . $session_data['userName'];;
             $data['user'] = $session_data['userName'];
             $data['page'] = 'main';
+            $data['carousel'] = true;
             $data['logout'] = true;
             $this->load->view('home', $data);
         }
@@ -95,6 +104,7 @@ class Login_controller extends CI_Controller {
         $data['title'] = 'Mini Things';
         $data['user'] = '';
         $data['page'] = 'main';
+        $data['carousel'] = true;
         $data['logout'] = false;
         $this->load->view('home', $data);
     }

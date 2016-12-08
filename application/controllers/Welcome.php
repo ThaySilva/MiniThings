@@ -18,6 +18,7 @@ class Welcome extends CI_Controller {
             $data['user'] = $session_data['userName'];
             $data['title'] = 'Mini Things';
             $data['page'] = 'main';
+            $data['carousel'] = true;
             $data['logout'] = true;
             $this->load->view('home', $data);
         }
@@ -25,6 +26,7 @@ class Welcome extends CI_Controller {
             $data['user'] = '';
             $data['title'] = 'Mini Things';
             $data['page'] = 'main';
+            $data['carousel'] = true;
             $data['logout'] = false;
             $this->load->view('home', $data);
         }

@@ -28,6 +28,7 @@ class Register_controller extends CI_Controller {
         $data['title'] = 'Register Mini Things';
         $data['user'] = '';
         $data['page'] = 'register';
+        $data['carousel'] = false;
         $data['logout'] = false;
         $data['alert'] = false;
         $this->load->view('home', $data);
@@ -38,13 +39,24 @@ class Register_controller extends CI_Controller {
         if(!empty($_POST)){
             if($this->UsersModel->register()) {
                 $this->session->set_flashdata('Success', 'User registered with success');
+                $session_data = $this->session->userdata('logged_in');
+                $data['title'] = 'Welcome ' . $session_data['userName'];
+                $data['user'] = $session_data['userName'];
                 $data['page'] = 'main';
-                redirect('home', $data);
+                $data['carousel'] = true;
+                $data['logout'] = true;
+                $data['alert'] = false;
+                $this->load->view('home', $data);
             }
             else{
                 $this->session->set_flashdata('Error', 'This user is already registered');
+                $data['title'] = 'Mini Things';
+                $data['user'] = '';
                 $data['page'] = 'login';
-                redirect('home', $data);
+                $data['carousel'] = false;
+                $data['logout'] = false;
+                $data['alert'] = true;
+                $this->load->view('home', $data);
             }
         }
     }

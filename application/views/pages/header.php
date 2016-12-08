@@ -46,7 +46,7 @@
             echo "<li class=''><a href='" . site_url('Register_controller/index') . "'>Register</a></li>";
             echo "<li class=''>";
             echo "<a href='#login' role='button' data-toggle='modal' style='padding-right:0'><span class='btn btn-large btn-success'>Login</span></a>";
-            echo "<div id='login' class='modal hide fade in' tabindex='-1' role='dialog' aria-labelledby='login' aria-hidden='false' >";
+            echo "<div id='login' class='modal fade' tabindex='-1' role='dialog' aria-labelledby='login' aria-hidden='false' >";
             echo "<div class='modal-header'>";
             echo "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>";
             echo "<h3>Login</h3>";
@@ -77,3 +77,17 @@
 </div>
 </div>
 </div>
+<!-- Header End ===============================================================================================================================-->
+    <?php if($carousel){
+    echo "<div id='carouselBlk'>";
+        echo "<div id='myCarousel' class='carousel slide'>";
+            echo "<div class='carousel-inner'>";
+                
+                $this->load->helper('Main');
+                echo displayCarousel();
+            echo "</div>";
+            echo "<a class='left carousel-control' href='#myCarousel' data-slide='prev'>&lsaquo;</a>";
+            echo "<a class='right carousel-control' href='#myCarousel' data-slide='next'>&rsaquo;</a>";
+        echo "</div>"; 
+    echo "</div>";
+    }?>

@@ -28,12 +28,14 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <body>
 <!-- Header ========================================================================= -->
     <?php include('pages/header.php');?>
+
 <!-- Header End====================================================================== -->
 
 <div id="mainBody">
 	<div class="container">
 	<div class="row">
 
+        <?php include('pages/sidebar.php');?>
         <?php include('pages/'. $page .'.php');?>
                 
 </div>

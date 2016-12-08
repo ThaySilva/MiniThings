@@ -1,19 +1,4 @@
 
-<div id="carouselBlk">
-	<div id="myCarousel" class="carousel slide">
-		<div class="carousel-inner">
-		  
-		  <?php $this->load->helper('Main'); 
-                    echo displayCarousel();
-                  ?>
-		</div>
-		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
-	  </div> 
-</div>
-
-<?php include('sidebar.php');?>
-
 <div class="span9">		
 			<div class="well well-small">
 			<h4>Featured Products <small class="pull-right">200+ featured products</small></h4>
