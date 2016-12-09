@@ -18,7 +18,7 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="<?php echo site_url(); ?>"><img src="<?= base_url();?>assets/images/logo.jpg" alt="Bootsshop"/></a>
+    <a class="brand" href="<?php echo base_url(); ?>"><img src="<?= base_url();?>assets/images/logo.jpg" alt="Bootsshop"/></a>
 		<form class="form-inline navbar-search" method="post" action="products.html" >
 		<input id="srchFld" class="srchTxt" type="text" />
 		  <select class="srchTxt">

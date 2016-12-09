@@ -63,7 +63,7 @@ class UsersModel extends CI_Model {
             
             $user = $this->db->insert($this->table, $this);
             
-            $this->session->set_userdata('name', $user->firstName);
+            $this->session->set_userdata('userName', $user['contactFirstName']);
             
             return true;
         }
