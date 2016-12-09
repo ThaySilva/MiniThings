@@ -23,7 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?= base_url();?>assets/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?= base_url();?>assets/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<?= base_url();?>assets/images/ico/apple-touch-icon-57-precomposed.png">
-	<style type="text/css" id="enject"></style>
+    <style type="text/css" id="enject">
+            .error{
+                color: red;
+                margin: 0 150px;
+            }
+    </style>
   </head>
 <body>
 <!-- Header ========================================================================= -->
