@@ -37,6 +37,8 @@ class ProductsModel extends CI_Model {
         
         $this->db->select('image');
         $this->db->from('products');
+        $this->db->order_by('image', 'asc');
+        $this->db->limit(4);
         
         $query = $this->db->get();
         
