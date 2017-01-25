@@ -14,6 +14,7 @@
 class UsersModel extends CI_Model {
     
     private $table = 'customers';
+    private $table2 = 'users';
     
     public function __construct() {
         parent::__construct();
@@ -23,8 +24,8 @@ class UsersModel extends CI_Model {
     
     function login($email, $password) {
         
-        $this->db->select('customerNumber, contactFirstName, email, password');
-        $this->db->from('customers');
+        $this->db->select('user_id, username, password, userType');
+        $this->db->from('users');
         $this->db->where('email', $email);
         $this->db->where('password', $password);
         $this->db->limit(1);
@@ -61,9 +62,15 @@ class UsersModel extends CI_Model {
             $this->email = $_POST['email'];
             $this->password = $_POST['password'];
             
-            $user = $this->db->insert($this->table, $this);
+            $customer = $this->db->insert($this->table, $this);
             
-            $this->session->set_userdata('userName', $user['contactFirstName']);
+            $user->username = $_POST['email'];
+            $user->password = $_POST['password'];
+            $user->userType = '2';
+            
+            $user = $this->db->insert($this->table2, $user);
+            
+            $this->session->set_userdata('userName', $customer['contactFirstName']);
             
             return true;
         }

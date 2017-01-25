@@ -38,28 +38,16 @@ function displayFeaturesProducts() {
     $images['AllImages'] = $CI->ProductsModel->getImages();
     
     $ImageArray = array();
-     echo "<div class='item active'>";
-	echo "<ul class='thumbnails'>";
-    foreach($images['AllImages'] as &$row){
-            echo "<li class='span3'>";
-                echo "<div class='thumbnail'>";
-                    echo "<i class='tag'></i>";
-                            echo "<a href='product_details.html'><img src='" . base_url() . "assets/images/products/" . $row['image'] ."' alt=''></a>";
-                            echo "<div class='caption'>";
-                                echo "<h5>Product name</h5>";
-                                echo "<h4><a class='btn' href='product_details.html'>VIEW</a> <span class='pull-right'>$222.00</span></h4>";
-                            echo "</div>";
-                    echo "</div>";
-            echo "</li>";
+    foreach($images['AllImages'] as $index=>&$row){
+        while($index != 4)
+        {
+            $ImageArray[$index] = $row['image'];
+        }
     }
-    	echo "</ul>";
-    echo "</div>";
-    
-   
-    
+    firstFour($ImageArray);
 }
 
-function firstFours($images){
+function firstFour($images){
     
     echo "<div class='item active'>";
 	echo "<ul class='thumbnails'>";
@@ -68,7 +56,7 @@ function firstFours($images){
             echo "<li class='span3'>";
                 echo "<div class='thumbnail'>";
                     echo "<i class='tag'></i>";
-                            echo "<a href='product_details.html'><img src='" . base_url() . "assets/images/products/" . $row ."' alt=''></a>";
+                            echo "<a href='product_details.html'><img src='" . base_url() . "assets/images/products/" . $row['image'] ."' alt=''></a>";
                             echo "<div class='caption'>";
                                 echo "<h5>Product name</h5>";
                                 echo "<h4><a class='btn' href='product_details.html'>VIEW</a> <span class='pull-right'>$222.00</span></h4>";

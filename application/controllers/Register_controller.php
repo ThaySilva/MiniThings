@@ -55,7 +55,7 @@ class Register_controller extends CI_Controller {
                 if($this->UsersModel->register()) {
                     $this->session->set_flashdata('Success', 'User registered with success');
                     $sess_array = array();
-                    $sess_array = array('userName' => $_POST['firstcxfbvx`fvsName']);
+                    $sess_array = array('userName' => $_POST['firstName']);
                     $this->session->set_userdata('logged_in', $sess_array);
                     $session_data = $this->session->userdata('logged_in');
                     $data['title'] = 'Welcome ' . $session_data['userName'];
