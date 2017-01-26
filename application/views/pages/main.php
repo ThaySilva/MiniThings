@@ -5,9 +5,9 @@
 			<div class="row-fluid">
 			<div id="featured" class="carousel slide">
 			<div class="carousel-inner">
-			  <?php $this->load->helper('Main');
-                            echo displayFeaturesProducts();
-                            ?>
+			  //<?php $this->load->helper('Main');
+//                            echo displayFeaturesProducts();
+//                            ?>
 			   <div class="item">
 			  <ul class="thumbnails">
 				<li class="span3">

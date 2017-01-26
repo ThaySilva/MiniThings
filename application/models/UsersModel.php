@@ -24,9 +24,9 @@ class UsersModel extends CI_Model {
     
     function login($email, $password) {
         
-        $this->db->select('user_id, username, password, userType');
+        $this->db->select('user_id, name, username, password, image, userType');
         $this->db->from('users');
-        $this->db->where('email', $email);
+        $this->db->where('username', $email);
         $this->db->where('password', $password);
         $this->db->limit(1);
         
@@ -64,13 +64,14 @@ class UsersModel extends CI_Model {
             
             $customer = $this->db->insert($this->table, $this);
             
+            $user->name = $_POST['firstName'];
             $user->username = $_POST['email'];
             $user->password = $_POST['password'];
             $user->userType = '2';
             
             $user = $this->db->insert($this->table2, $user);
             
-            $this->session->set_userdata('userName', $customer['contactFirstName']);
+            $this->session->set_userdata('userName', $user['name']);
             
             return true;
         }

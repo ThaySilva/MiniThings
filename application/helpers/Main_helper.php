@@ -31,21 +31,21 @@ function displayCarousel() {
     }
 }
 
-function displayFeaturesProducts() {
-    
-    $CI = get_instance();
-    $CI->load->model('ProductsModel');
-    $images['AllImages'] = $CI->ProductsModel->getImages();
-    
-    $ImageArray = array();
-    foreach($images['AllImages'] as $index=>&$row){
-        while($index != 4)
-        {
-            $ImageArray[$index] = $row['image'];
-        }
-    }
-    firstFour($ImageArray);
-}
+//function displayFeaturesProducts() {
+//    
+//    $CI = get_instance();
+//    $CI->load->model('ProductsModel');
+//    $images['AllImages'] = $CI->ProductsModel->getImages();
+//    
+//    $ImageArray = array();
+//    foreach($images['AllImages'] as $index=>&$row){
+//        while($index != 4)
+//        {
+//            $ImageArray[$index] = $row['image'];
+//        }
+//    }
+//    firstFour($ImageArray);
+//}
 
 function firstFour($images){
     

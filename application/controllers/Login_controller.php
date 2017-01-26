@@ -27,12 +27,25 @@ class Login_controller extends CI_Controller {
     function index() {
         
         if($this->session->userData('logged_in')){
-            $data['title'] = 'Welcome ' . $session_data['userName'];
-            $data['user'] = $session_data['userName'];
-            $data['page'] = 'main';
-            $data['carousel'] = true;
-            $data['alert'] = false;
-            redirect('home', $data);
+            if($session_data['UserType'] == 2)
+            {
+                $data['title'] = 'Welcome ' . $session_data['userName'];
+                $data['user'] = $session_data['userName'];
+                $data['page'] = 'main';
+                $data['carousel'] = true;
+                $data['alert'] = false;
+                redirect('home', $data);
+            }
+            else if($session_data['UserType'] == 1)
+            {
+                $data['title'] = 'Welcome ' . $session_data['userName'];
+                $data['user'] = $session_data['userName'];
+                $data['image'] = $session_data['Image'];
+                $data['page'] = 'main';
+                $data['carousel'] = true;
+                $data['alert'] = false;
+                redirect('adminHome', $data);
+            }
         }
         else {
             $data['page'] = 'login';
@@ -66,12 +79,25 @@ class Login_controller extends CI_Controller {
         else
         {
             $session_data = $this->session->userdata('logged_in');
-            $data['title'] = 'Welcome ' . $session_data['userName'];;
-            $data['user'] = $session_data['userName'];
-            $data['page'] = 'main';
-            $data['carousel'] = true;
-            $data['logout'] = true;
-            $this->load->view('home', $data);
+            if($session_data['UserType'] == 2)
+            {
+                $data['title'] = 'Welcome ' . $session_data['userName'];;
+                $data['user'] = $session_data['userName'];
+                $data['page'] = 'main';
+                $data['carousel'] = true;
+                $data['logout'] = true;
+                $this->load->view('home', $data);
+            }
+            else if($session_data['UserType'] == 1)
+            {
+                $data['title'] = 'Welcome ' . $session_data['userName'];;
+                $data['user'] = $session_data['userName'];
+                $data['image'] = $session_data['Image'];
+                $data['page'] = '';
+                $data['carousel'] = true;
+                $data['logout'] = true;
+                $this->load->view('adminHome', $data);
+            }
         }
     }
     
@@ -82,10 +108,9 @@ class Login_controller extends CI_Controller {
         $result = $this->UsersModel->login($email, $password);
         
         if($result) {
-            
             $sess_array = array();
             foreach($result as $row) {
-                $sess_array = array('CustomerNo' => $row['customerNumber'], 'userName' => $row['contactFirstName']);
+                $sess_array = array('userName' => $row['name'], 'UserType' => $row['userType'], 'Image' => $row['image']);
                 $this->session->set_userdata('logged_in', $sess_array);
             }
             return true;
