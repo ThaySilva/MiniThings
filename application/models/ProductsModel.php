@@ -27,24 +27,76 @@ class ProductsModel extends CI_Model {
         
         $query = $this->db->get();
         
-        if($query->num_rows() >= 1)
+        if ($query->num_rows() >= 1) {
             return $query->result_array();
-        else
+        } else {
             return false;
+        }
     }
         
-    public function getImages(){
+    public function getRandomImages($amount){
         
-        $this->db->select('image');
+        $this->db->select('productName, productLine, productDescription, MSRP, image');
         $this->db->from('products');
-        $this->db->order_by('image', 'asc');
-        $this->db->limit(4);
+        $this->db->order_by(rand(1,100), 'RANDOM');
+        $this->db->limit($amount);
         
         $query = $this->db->get();
         
-        if($query->num_rows() >= 1)
+        if ($query->num_rows() >= 1) {
             return $query->result_array();
-        else
+        } else {
             return false;
+        }
+    }
+    
+    public function getImages($order, $amount, $start)
+    {
+        $this->db->select('productCode , productName , productLine , productDescription , MSRP , image');
+        $this->db->from('products');
+        $this->db->order_by($order);
+        if ($start != 0) {
+            $this->db->limit($amount, $start);
+        } else {
+            $this->db->limit($amount);
+        }
+
+        $query = $this->db->get();
+        
+        return $query->result_array();
+        
+    }
+    
+    public function getImageWhere($type, $code, $amount, $start){
+        $this->db->select('productCode , productName , productLine , productDescription , MSRP , image');
+        $this->db->from('products');
+        
+        if ($type != '') {
+            $this->db->where('productLine', $type);
+        } else if ($code != '') {
+            $this->db->where('productCode', $code);
+        }
+
+        if ($start != 0) {
+            $this->db->limit($amount, $start);
+        } else {
+            $this->db->limit($amount);
+        }
+
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+    
+    public function getProducts($type){
+        
+        $this->db->select('productCode , productName , productLine , productDescription , MSRP , image');
+        $this->db->from('products');
+        $this->db->where('productLine', $type);
+        
+        $query = $this->db->get();
+
+        return $query->result_array();
+        
     }
 }

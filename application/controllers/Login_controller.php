@@ -81,7 +81,7 @@ class Login_controller extends CI_Controller {
             $session_data = $this->session->userdata('logged_in');
             if($session_data['UserType'] == 2)
             {
-                $data['title'] = 'Welcome ' . $session_data['userName'];;
+                $data['title'] = 'Welcome ' . $session_data['userName'];
                 $data['user'] = $session_data['userName'];
                 $data['page'] = 'main';
                 $data['carousel'] = true;
@@ -90,7 +90,7 @@ class Login_controller extends CI_Controller {
             }
             else if($session_data['UserType'] == 1)
             {
-                $data['title'] = 'Welcome ' . $session_data['userName'];;
+                $data['title'] = 'Welcome ' . $session_data['userName'];
                 $data['user'] = $session_data['userName'];
                 $data['image'] = $session_data['Image'];
                 $data['page'] = '';

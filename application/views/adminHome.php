@@ -685,7 +685,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <script src="<?= base_url() ?>/assets/admin/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="<?= base_url() ?>/assets/js/admin/custom.min.js"></script>
+    <script src="<?= base_url() ?>/assets/admin/custom.min.js"></script>
 
     <!-- Flot -->
     <script>

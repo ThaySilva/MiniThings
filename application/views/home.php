@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed'); ?>
     <meta name="author" content="">
 
 <!-- Bootstrap style --> 
-    <link id="callCss" rel="stylesheet" href="<?= base_url();?>assets/css/minithings/bootstrap.min.css" media="screen"/>
+    <link id="callCss" rel="stylesheet" href="<?= base_url();?>assets/css/bootstrap.min.css" media="screen"/>
     <link href="<?= base_url();?>assets/css/base.css" rel="stylesheet" media="screen"/>
 <!-- Bootstrap style responsive -->	
 	<link href="<?= base_url();?>assets/css/bootstrap-responsive.min.css" rel="stylesheet"/>
